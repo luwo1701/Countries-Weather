@@ -1,29 +1,22 @@
 #!/usr/bin/python
+import json
+import urllib2
 
+print "Content-type: text/html"
+print
 
-print("Content-type: text/html")
-print()
+response = urllib2.urlopen('https://api.forecast.io/forecast/3f98afd1e40af7de9a07faf1cbd317ee/40.014984,-105.270546')
+data = json.load(response)   
+print data
 
 contents="""
 <html>
  <head>
- <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
-    <title>HW #4 Worley</title>
-     <script>
-    $(document).ready(function() {
-                  var url = 'https://api.forecast.io/forecast/3f98afd1e40af7de9a07faf1cbd317ee/40.014984,-105.270546'
-                        $.ajax({url:url,dataType:"jsonp"}).then(function(data) {
-                               $('#temp').append(data.currently.temperature)
-                                       console.log(data)
-                                           })
-                        })
-     </script>
+ 
  </head>
         <body>
           <p>Hello, world.</p>
-             <p id="results">original</p>
-              <p id ="temp"> temp is </p>
-            
+             
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="959" height="593">
@@ -187,4 +180,4 @@ contents="""
         </body>
 </html>
 """
-print(contents)
+print contents
