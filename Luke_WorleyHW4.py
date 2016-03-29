@@ -6,9 +6,7 @@ print "Content-type: text/html"
 
 print
 
-response = urllib2.urlopen('https://api.forecast.io/forecast/3f98afd1e40af7de9a07faf1cbd317ee/40.014984,-105.270546')
-data = json.load(response)
-print data
+
 
 #the above code was sourced from http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
 contents="""
@@ -192,3 +190,22 @@ print """
 });
 </script>
 """
+
+states_caps = {
+        'AL':{'state':'Alabama',        'capital':'Montgomery', 'lat':'32.23', 'long':'-86.22'
+},
+        'AK':{'state':'Alaska',         'capital':'Juneau', 'lat':'58.22', 'long':'-134.35' },
+        'AZ':{'state':'Arizona',        'capital':'Phoenix', 'lat':'33.26', 'long':'-112.1'},
+        'AR':{'state':'Arkansas',       'capital':'Little Rock', 'lat':'34.44', 'long':'-92.14'},
+
+}
+
+for key, value in states_caps.items():
+   response = urllib2.urlopen("https://api.forecast.io/forecast/3f98afd1e40af7de9a07faf1cbd317ee/"+value['lat'] +"," + value['long']
+)
+   data = json.load(response)
+   current = data['currently']
+   print key
+   print current['temperature']
+    
+
