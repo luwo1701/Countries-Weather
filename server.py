@@ -1,5 +1,5 @@
 #!/usr/bin/python
- 
+#found on stack overflow
 import BaseHTTPServer
 import CGIHTTPServer
 import cgitb; cgitb.enable()  ## This line enables CGI error reporting
